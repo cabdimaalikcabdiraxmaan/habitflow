@@ -12,6 +12,7 @@ export default function Register() {
     const [confirm, setConfirm] = useState('')
     const [error, setError] = useState<string | null>(null)
     const [loading, setLoading] = useState(false)
+    const [showSuccess, setShowSuccess] = useState(false)
 
     function validate() {
         if (!name.trim() || !email.trim() || !password) return 'All fields are required'
@@ -32,7 +33,7 @@ export default function Register() {
         setLoading(true)
         try {
             await register(name, email, password)
-            navigate('/dashboard')
+            setShowSuccess(true)
         } catch (err: unknown) {
             const message = err instanceof Error ? err.message : 'Registration failed'
             setError(message)
@@ -122,6 +123,23 @@ export default function Register() {
                     </p>
                 </div>
             </div>
+
+            {showSuccess && (
+                <div className="auth-modal-overlay" role="presentation">
+                    <div className="auth-modal" role="dialog" aria-modal="true" aria-labelledby="register-success-title">
+                        <div className="auth-modal-icon" aria-hidden="true">✓</div>
+                        <h2 id="register-success-title">Successfully registered</h2>
+                        <p>Your account has been created. Sign in to start tracking your habits.</p>
+                        <button
+                            className="auth-btn auth-btn-primary auth-btn-full"
+                            type="button"
+                            onClick={() => navigate('/login')}
+                        >
+                            Log in
+                        </button>
+                    </div>
+                </div>
+            )}
         </div>
     )
 }

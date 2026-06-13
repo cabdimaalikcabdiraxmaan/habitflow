@@ -10,12 +10,13 @@ import CalendarView from './components/dashboard/CalendarView'
 import StatisticsView from './components/dashboard/StatisticsView'
 import ManageHabits from './components/dashboard/ManageHabits'
 import AccountSettingsView from './components/dashboard/AccountSettingsView'
+import ServerWakeBanner from './components/ServerWakeBanner'
 import './App.css'
-import { AuthProvider } from './context/AuthContext'
 
 function App() {
   return (
-    <AuthProvider>
+    <>
+      <ServerWakeBanner />
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Landing />} />
@@ -39,7 +40,7 @@ function App() {
           <Route path="*" element={<Navigate to="/" replace />} />
         </Routes>
       </BrowserRouter>
-    </AuthProvider>
+    </>
   )
 }
 

@@ -410,6 +410,17 @@
     background: linear-gradient(180deg, #f8fafc 0%, #fff 100%);
 }
 
+.account-settings-card-header-row {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 1rem;
+}
+
+.account-settings-security-toggle {
+    margin-top: 0.15rem;
+}
+
 .account-settings-card-header h3 {
     margin: 0 0 0.25rem;
     font-size: 1.05rem;
@@ -469,6 +480,61 @@
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 0.85rem;
+    margin-top: 0.85rem;
+}
+
+.dash-password-field {
+    position: relative;
+}
+
+.dash-password-field input {
+    width: 100%;
+    padding-right: 2.85rem;
+}
+
+.dash-password-field input:read-only {
+    background: #f8fafc;
+    color: var(--slate-500);
+    cursor: default;
+}
+
+.dash-password-toggle {
+    position: absolute;
+    top: 50%;
+    right: 0.55rem;
+    transform: translateY(-50%);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 34px;
+    height: 34px;
+    padding: 0;
+    border: none;
+    border-radius: 10px;
+    background: transparent;
+    color: var(--slate-500);
+    cursor: pointer;
+    transition: background 0.15s ease, color 0.15s ease;
+}
+
+.dash-password-toggle:hover {
+    background: rgba(15, 23, 42, 0.06);
+    color: var(--teal-900);
+}
+
+.dash-password-toggle:focus-visible {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(34, 197, 94, 0.2);
+}
+
+.dash-password-toggle:disabled {
+    opacity: 0.45;
+    cursor: not-allowed;
+}
+
+.dash-password-toggle:disabled:hover {
+    background: transparent;
+    color: var(--slate-500);
 }
 
 .account-settings-preference {
@@ -2035,6 +2101,17 @@
     justify-content: flex-end;
     gap: 0.65rem;
     margin-top: 0.5rem;
+}
+
+.account-delete-modal-text {
+    margin: 0 0 1.25rem;
+    color: var(--slate-500);
+    font-size: 0.95rem;
+    line-height: 1.55;
+}
+
+.account-delete-modal .dash-modal-header {
+    margin-bottom: 0.75rem;
 }
 
 /* Responsive */

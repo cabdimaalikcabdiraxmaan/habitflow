@@ -116,3 +116,18 @@ code {
   padding: 4px 8px;
   background: var(--code-bg);
 }
+
+.server-wake-banner {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 200;
+  padding: 0.65rem 1rem;
+  background: #064e3b;
+  color: #ecfdf5;
+  font-size: 0.88rem;
+  font-weight: 600;
+  text-align: center;
+  box-shadow: 0 4px 12px rgba(6, 78, 59, 0.25);
+}

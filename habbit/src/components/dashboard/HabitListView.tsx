@@ -1,9 +1,10 @@
 import { Link } from 'react-router-dom'
 import { useHabits } from '../../context/HabitsContext'
 import { getTargetProgress, isCompletedOnDate, todayKey } from '../../api/client'
+import HabitModal from './HabitModal'
 
 export default function HabitListView() {
-    const { habits, loading, error, toggleComplete } = useHabits()
+    const { habits, loading, error, toggleComplete, openCreateModal } = useHabits()
     const today = todayKey()
 
     if (loading) return <div className="dash-loading">Loading habits…</div>
@@ -11,11 +12,21 @@ export default function HabitListView() {
 
     if (!habits.length) {
         return (
-            <section className="dashboard-empty">
-                <div className="dashboard-empty-icon static" aria-hidden="true">+</div>
-                <h2>No habits yet</h2>
-                <p>Open your profile menu and choose <strong>Manage habits</strong> to get started.</p>
-            </section>
+            <>
+                <section className="dashboard-empty">
+                    <button
+                        className="dashboard-empty-icon"
+                        type="button"
+                        onClick={openCreateModal}
+                        aria-label="Add your first habit"
+                    >
+                        +
+                    </button>
+                    <h2>No habits yet</h2>
+                    <p>Click <strong>+</strong> above to create your first habit.</p>
+                </section>
+                <HabitModal />
+            </>
         )
     }
 

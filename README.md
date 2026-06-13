@@ -2,8 +2,8 @@
 
 A full-stack habit tracker built for real daily use and portfolio demos. Track habits, mark daily progress, view calendar history, and manage your account.
 
-**Live demo:** _Add your deployed URL here_  
-**GitHub:** _Add your repository URL here_
+**Live demo:** [https://habittflow.netlify.app](https://habittflow.netlify.app)  
+**GitHub:** [https://github.com/cabdimaalikcabdiraxmaan/habitflow](https://github.com/cabdimaalikcabdiraxmaan/habitflow)
 
 <!-- Add a screenshot: docs/screenshots/dashboard.png -->
 
@@ -104,9 +104,11 @@ App runs at **http://localhost:5173**
 
 Quick summary:
 - **Backend + DB:** Render (uses `render.yaml` in repo root)
-- **Frontend:** Vercel (root directory: `habbit/`)
+- **Frontend:** Netlify (base directory: `habbit/`)
 
-After deploy, set `VITE_API_URL` on Vercel to your Render API URL.
+After deploy, set `VITE_API_URL` on Netlify to your Render API URL (no trailing slash), then redeploy.
+
+> **Why is the live demo slow?** The Netlify frontend loads quickly. The API on Render’s **free tier sleeps** after ~15 minutes of inactivity. The first login or dashboard load can take **30–60 seconds** while the server wakes up. This is normal for free Render — not a bug in your app.
 
 ---
 
