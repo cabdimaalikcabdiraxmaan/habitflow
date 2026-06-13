@@ -88,18 +88,20 @@ export default function CalendarView() {
     return (
         <section className="dash-calendar">
             <div className="dash-page-hero cal-hero">
-                <div>
+                <div className="dash-page-hero-copy">
                     <span className="dash-page-badge">Calendar</span>
                     <h2>Your habit timeline</h2>
                     <p>Track completions day by day and spot your consistency patterns.</p>
                 </div>
-                <div className="cal-month-picker">
-                    <button className="cal-nav-btn" type="button" onClick={prevMonth} aria-label="Previous month">‹</button>
-                    <div className="cal-month-label">
-                        <strong>{monthLabel}</strong>
-                        <button className="cal-today-btn" type="button" onClick={goToToday}>Today</button>
+                <div className="cal-hero-controls">
+                    <div className="cal-month-picker">
+                        <button className="cal-nav-btn" type="button" onClick={prevMonth} aria-label="Previous month">‹</button>
+                        <div className="cal-month-label">
+                            <strong>{monthLabel}</strong>
+                            <button className="cal-today-btn" type="button" onClick={goToToday}>Today</button>
+                        </div>
+                        <button className="cal-nav-btn" type="button" onClick={nextMonth} aria-label="Next month">›</button>
                     </div>
-                    <button className="cal-nav-btn" type="button" onClick={nextMonth} aria-label="Next month">›</button>
                 </div>
             </div>
 

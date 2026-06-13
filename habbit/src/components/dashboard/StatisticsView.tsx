@@ -43,22 +43,30 @@ export default function StatisticsView() {
     return (
         <section className="dash-stats-page">
             <div className="dash-page-hero stats-hero">
-                <div>
+                <div className="dash-page-hero-copy">
                     <span className="dash-page-badge">Statistics</span>
                     <h2>Your progress at a glance</h2>
                     <p>See how consistently you&apos;re building better routines.</p>
                 </div>
-                <div className="stats-ring-card">
-                    <div
-                        className="stats-ring"
-                        style={{ '--progress': `${stats.weeklyCompletion}%` } as CSSProperties}
-                    >
-                        <div className="stats-ring-inner">
-                            <strong>{stats.weeklyCompletion}%</strong>
-                            <span>Weekly</span>
+                <div className="stats-hero-summary">
+                    <div className="stats-ring-card">
+                        <div
+                            className="stats-ring"
+                            style={{ '--progress': `${completionRate}%` } as CSSProperties}
+                        >
+                            <div className="stats-ring-inner">
+                                <strong>{completionRate}%</strong>
+                                <span>Today</span>
+                            </div>
                         </div>
+                        <p>
+                            {stats.completedToday} of {stats.totalHabits || 0} habit{stats.totalHabits !== 1 ? 's' : ''} done
+                        </p>
                     </div>
-                    <p>{stats.completedToday} of {stats.totalHabits || 0} habits done today</p>
+                    <div className="stats-hero-weekly">
+                        <strong>{stats.weeklyCompletion}%</strong>
+                        <span>Weekly completion</span>
+                    </div>
                 </div>
             </div>
 

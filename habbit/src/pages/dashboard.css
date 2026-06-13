@@ -767,7 +767,7 @@
 }
 
 .dashboard-topbar h1 {
-    margin: 0 0 0.35rem;
+    margin: 0 0 0.65rem;
     font-size: clamp(1.5rem, 3vw, 2rem);
     font-weight: 800;
     letter-spacing: -0.03em;
@@ -777,11 +777,12 @@
     margin: 0;
     color: var(--slate-500);
     font-size: 0.95rem;
+    line-height: 1.5;
 }
 
 .dashboard-main {
     width: 100%;
-    padding: 1.25rem 0 2.5rem;
+    padding: 0.5rem 0 2.5rem;
     box-sizing: border-box;
 }
 
@@ -790,20 +791,20 @@
     grid-template-columns: repeat(3, 1fr);
     gap: 1rem;
     width: 100%;
-    margin: 0 0 0.5rem;
+    margin: 1.5rem 0 2rem;
     box-sizing: border-box;
 }
 
 .dashboard-stat-card {
     display: flex;
     flex-direction: column;
-    gap: 0.25rem;
-    padding: 1.25rem 1.35rem;
+    gap: 0.5rem;
+    padding: 1.35rem 1.5rem;
     border-radius: 16px;
     background: rgba(255, 255, 255, 0.92);
     border: 1px solid var(--border);
     box-shadow: 0 4px 16px rgba(15, 23, 42, 0.04);
-    min-height: 96px;
+    min-height: 104px;
     justify-content: center;
 }
 
@@ -1208,6 +1209,16 @@
     max-width: 40rem;
 }
 
+.dash-page-hero-copy {
+    flex: 1;
+    min-width: 0;
+    text-align: left;
+}
+
+.dash-page-hero-copy .dash-page-badge {
+    display: inline-flex;
+}
+
 @media (min-width: 1200px) {
     .stats-cards-row {
         grid-template-columns: repeat(4, minmax(0, 1fr));
@@ -1232,28 +1243,25 @@
 
 .cal-hero,
 .stats-hero {
-    flex-wrap: wrap;
-    justify-content: center;
-    text-align: center;
-}
-
-.cal-hero > div:first-child,
-.stats-hero > div:first-child {
-    display: flex;
-    flex-direction: column;
     align-items: center;
+    justify-content: space-between;
+    gap: 1.25rem;
+    flex-wrap: wrap;
 }
 
-.cal-hero p,
-.stats-hero p {
-    max-width: 40rem;
+.cal-hero-controls {
+    flex-shrink: 0;
 }
 
 .cal-month-picker {
     display: flex;
     align-items: center;
-    gap: 0.5rem;
+    gap: 0.65rem;
     flex-shrink: 0;
+    padding: 0.5rem 0.65rem;
+    border-radius: 14px;
+    background: #f8fafc;
+    border: 1px solid var(--border);
 }
 
 .cal-nav-btn {
@@ -1280,7 +1288,7 @@
     flex-direction: column;
     align-items: center;
     gap: 0.35rem;
-    min-width: 160px;
+    min-width: 148px;
 }
 
 .cal-month-label strong {
@@ -1621,12 +1629,52 @@
 }
 
 /* Statistics */
+.stats-hero-summary {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    flex-shrink: 0;
+}
+
 .stats-ring-card {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 0.5rem;
+    gap: 0.45rem;
     flex-shrink: 0;
+    padding: 0.85rem 1rem;
+    border-radius: 16px;
+    background: #f8fafc;
+    border: 1px solid var(--border);
+}
+
+.stats-hero-weekly {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-width: 96px;
+    padding: 0.85rem 1rem;
+    border-radius: 16px;
+    background: #fff;
+    border: 1px solid var(--border);
+    box-shadow: 0 4px 14px rgba(15, 23, 42, 0.04);
+}
+
+.stats-hero-weekly strong {
+    font-size: 1.35rem;
+    font-weight: 800;
+    line-height: 1;
+    color: var(--teal-900);
+}
+
+.stats-hero-weekly span {
+    margin-top: 0.35rem;
+    font-size: 0.72rem;
+    font-weight: 600;
+    color: var(--slate-500);
+    text-align: center;
+    line-height: 1.35;
 }
 
 .stats-ring {
@@ -1671,7 +1719,7 @@
     font-size: 0.78rem;
     color: var(--slate-500);
     text-align: center;
-    max-width: 120px;
+    white-space: nowrap;
 }
 
 .stats-cards-row {
@@ -2126,6 +2174,18 @@
 
     .dash-page-hero {
         flex-direction: column;
+        align-items: stretch;
+    }
+
+    .cal-hero-controls,
+    .stats-hero-summary {
+        width: 100%;
+        justify-content: center;
+    }
+
+    .cal-month-picker {
+        width: 100%;
+        justify-content: center;
     }
 
     .account-settings-grid,
