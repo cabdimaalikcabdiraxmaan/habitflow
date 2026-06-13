@@ -1,0 +1,55 @@
+datasource db {
+  provider = "postgresql"
+  url      = env("DB_URL")
+}
+
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model User {
+  id       Int    @id @default(autoincrement())
+  name     String
+  email    String @unique
+  password String
+
+  habits  Habit[]
+  profile Profile?
+}
+
+model Habit {
+  id          Int     @id @default(autoincrement())
+  title       String
+  description String?
+  category    String?
+  frequency   String
+  targetDays  Int?
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  userId Int
+  user   User @relation(fields: [userId], references: [id])
+
+  logs HabitLog[]
+}
+
+model HabitLog {
+  id            Int      @id @default(autoincrement())
+  completedDate DateTime
+  createdAt     DateTime @default(now())
+
+  habitId Int
+  habit   Habit @relation(fields: [habitId], references: [id])
+}
+
+model Profile {
+  id                  Int     @id @default(autoincrement())
+  avatarUrl           String?
+  theme               String  @default("light")
+  notificationEnabled Boolean @default(true)
+
+  userId Int  @unique
+  user   User @relation(fields: [userId], references: [id])
+}

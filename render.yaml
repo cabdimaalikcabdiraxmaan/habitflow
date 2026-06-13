@@ -1,0 +1,24 @@
+databases:
+  - name: habitflow-db
+    databaseName: habitflow
+    user: habitflow
+    plan: free
+
+services:
+  - type: web
+    name: habitflow-api
+    runtime: node
+    rootDir: backend
+    plan: free
+    buildCommand: npm install && npx prisma generate && npx prisma migrate deploy
+    startCommand: npm start
+    healthCheckPath: /health
+    envVars:
+      - key: DB_URL
+        fromDatabase:
+          name: habitflow-db
+          property: connectionString
+      - key: JWT_SECRET
+        generateValue: true
+      - key: NODE_ENV
+        value: production
